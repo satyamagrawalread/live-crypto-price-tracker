@@ -1,12 +1,12 @@
 "use client";
-import { useGetRecentInfoByNameQuery } from "@/redux/services";
+import { useGetRecentInfoByNameQuery } from "@/redux/services/api.service";
 import { useSelector } from "react-redux";
 import { RootState, store } from "@/redux/store";
 
-export default function Table() {
-    const cryptoName = useSelector((state: RootState) => state.cryptoName.name)
-  const { data, error, isLoading } = useGetRecentInfoByNameQuery(cryptoName, {
-    pollingInterval: 300000,
+export default function CoinDetailsTable() {
+    const coinName = useSelector((state: RootState) => state.coinData.name)
+  const { data, error, isLoading } = useGetRecentInfoByNameQuery(coinName, {
+    pollingInterval: 3000,
     skipPollingIfUnfocused: true
   });
   return (
@@ -41,8 +41,8 @@ export default function Table() {
               </tr>
             </thead>
             <tbody>
-              {data.data.map((item, index) => (
-                <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+              {data.data.map((item) => (
+                <tr key={item._id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 
                 <td className="px-6 py-4">{item.name}</td>
                 <td className="px-6 py-4">{item.rate}</td>

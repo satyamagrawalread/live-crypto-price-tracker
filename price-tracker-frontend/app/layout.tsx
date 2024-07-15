@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { CryptoDataProvider } from "@/providers/CryptoDataProvider";
+import { CoinDataProvider } from "@/providers/CoinDataProvider";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CryptoDataProvider>
+        <CoinDataProvider>
           {children}
-        </CryptoDataProvider>
+        </CoinDataProvider>
       </body>
     </html>
   );
