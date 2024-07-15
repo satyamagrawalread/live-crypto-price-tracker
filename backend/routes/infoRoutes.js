@@ -66,21 +66,11 @@ const fetchCryptoInfo = async (cryptoCode) => {
     }
 }
 
-setInterval(() => {
-    fetchCryptoInfo('BTC');  
-    fetchCryptoInfo('ETH');
-    fetchCryptoInfo('SOL');
-}, 15000);
 
-setInterval(() => {
-    deleteOldEntries('Bitcoin');
-    deleteOldEntries('Ethereum');
-    deleteOldEntries('Solana');
-}, 200000);
 
 router.get('/getRecentInfo', async (req, res) => {
     console.log("Entered getRecentInfo");
-    const { name } = req.body;
+    const { name } = req.query;
     console.log(name);
     const cryptoData = await CryptoInfo.find({ name: name }).sort({ timestamp: -1 }).limit(20);
     console.log(cryptoData);
