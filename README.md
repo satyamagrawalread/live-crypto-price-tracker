@@ -9,6 +9,8 @@ Command:
 
 cd price-tracker-frontend
 
+pnpm install
+
 pnpm dev
 
 
@@ -16,6 +18,8 @@ pnpm dev
 Command: 
 
 cd backend
+
+npm install
 
 npm start
 
